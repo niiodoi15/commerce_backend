@@ -24,8 +24,8 @@ const createCategoryController = async (req, res, next) => {
 
 const fetchAllCategory = async (req, res, next) => {
     try {
-        const result = await fetchCategoryService();
-        return res.status(result.code).json(result);
+        const data = await fetchCategoryService();
+        return sendResponse(res, data, 'Category created successfully', 201);
     } catch (error) {
         console.log(error)
         next(error);

@@ -26,7 +26,7 @@ const createProductController = async (req, res) => {
 const getAllProducts = async (req, res, next) => {
     try {
         const result = await getAllProductService();
-        return res.status(result.code).json(result);
+        return sendResponse(res, result, 'Products fetched successfully', 201);
     } catch (error) {
         next(error);
     }
@@ -37,7 +37,7 @@ const getProductsByCategory = async (req, res, next) => {
         const { id } = req.params;
 
         const response = await fetchProductsByCategory(id);
-        return res.status(response.code).json(response);
+        return sendResponse(res, data, 'Products fetched successfully', 201);
     } catch (error) {
         return next(error);
     }
